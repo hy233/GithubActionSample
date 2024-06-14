@@ -130,13 +130,13 @@ def pushplus_notification(title, content):
 
 def weather_report(this_city):
     # 1.获取access_token
-    access_token = get_access_token()
+    # access_token = get_access_token()
     # 2. 获取天气
     weather = get_weather(this_city)
     print(f"天气信息： {weather}")
     # 3. 发送消息
     # send_weather(access_token, weather)
-    pushplus_notification("天气预报来啦", weather)
+    pushplus_notification("天气预报来啦", f"天气信息： {weather}\n每日一句情话：get_daily_love()")
 
 
 
