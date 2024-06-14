@@ -137,7 +137,7 @@ def weather_report(this_city):
     # 3. 发送消息
     # send_weather(access_token, weather)
     love_talk = get_daily_love()
-    pushplus_notification("天气预报来啦", f"天气信息：\n {weather}\n每日一句情话：\n{love_talk}")
+    pushplus_notification("天气预报来啦", f"天气信息：\n {weather}\n\n每日一句情话：\n{love_talk}")
 
 
 
