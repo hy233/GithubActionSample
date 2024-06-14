@@ -11,6 +11,7 @@ appSecret = os.environ.get("APP_SECRET")
 openId = os.environ.get("OPEN_ID")
 # 天气预报模板ID
 weather_template_id = os.environ.get("TEMPLATE_ID")
+token = os.environ.get("Pushplus_Token")
 
 def get_weather(my_city):
     urls = ["http://www.weather.com.cn/textFC/hb.shtml",
@@ -117,6 +118,15 @@ def send_weather(access_token, weather):
     print(requests.post(url, json.dumps(body)).text)
 
 
+def pushplus_notification(title, content):
+    url = 'http://www.pushplus.plus/send'
+    data = {
+        "token": token,
+        "title": title,
+        "content": content
+    }
+    headers = {'Content-Type': 'application/json'}
+    response = requests.post(url, json=data, headers=headers)
 
 def weather_report(this_city):
     # 1.获取access_token
@@ -125,7 +135,8 @@ def weather_report(this_city):
     weather = get_weather(this_city)
     print(f"天气信息： {weather}")
     # 3. 发送消息
-    send_weather(access_token, weather)
+    # send_weather(access_token, weather)
+    pushplus_notification("天气预报来啦", weather)
 
 
 
